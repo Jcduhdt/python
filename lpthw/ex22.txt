@@ -1,0 +1,109 @@
+运行powershell
+pwd : print work directory
+hostname : 计算机在网络中的名称
+mkdir : make directory
+cd : change directory
+ls : list
+rmdir : remove directory
+New-Item : 创建空文件  New-Item test.txt
+pushd : 推送目录 记住当前位置，并传送到相应地方去
+popd ： 弹出目录 回到上一位置 与 pushd 一起使用
+cp : copy  cp 文件1 文件2
+mv : move  mv 文件1 文件2
+more : 逐页查看文件 more 文件  即显示文件内容
+cat : 显示流文件内容 没有分页
+exit : 退出powershell
+echo : 创建并写入文件    eg. echo "This is a test file." > test.txt
+
+python ex
+python ex1.py : 运行ex1.py脚本
+python文件中不能以空格开头  函数之后有括号的，括号必须紧跟函数名
+# ：用于注释
+^ ：出错时，powershell中的这个符号用于提醒错在哪
+print() : 打印括号中的内容，可以是''或""引起来的字符串，也可以是变量名
+    若要把变量放入""中，必须是print(f"字符串{变量名}")
+    否则只能print("字符串1", 变量, "字符串2")    用,隔开区分不同类型
+    可以print("xx", end='') 以空格取代 \n
++-*/ ： 加减乘除
+% : 除法取余 取模
+= ： 赋值 可赋数字 函数 字符串
+== ：检查左右两边是否相等
+round() : 四舍五入  结果一定是整数？
+.format() : 格式化字符 在已创建的字符串上对应的{}应用格式化 见ex8.py
+print("""   """) : 在"""之间放任意多行文本 应为三个连续"
+\\   输出反斜杠\
+\'   输出单引号'
+\"   输出双引号"
+\a   ASCII响铃符(BEL)
+\b   ASCII退格符(BS)
+\f   ASCII进纸符(FF)
+\n   ASCII换行符(LF)
+\N(name)    Unicode数据库中的字符名，其中name是它的名字，仅Unicode适用
+\r   ASCII回车符(CR)
+\t   ASCII水平制表符(TAB)
+\uxxx   值为16位十六进制xxxx的字符
+\Uxxxxxxxx   值为32位十六进制xxxxxxxx的字符
+\v   ASCII垂直制表符(VT)
+\ooo   值为八进制值ooo的字符
+\xhh   值为十六进制hh的字符
+input() : 接收输入  可以赋值给变量
+python -m pydoc 命令 : 在powershell中运行，查看该命令的帮助文档，键入q退出pydoc
+from sys import argv : 从sys这个模块中使用argv这个参数变量  即库的使用 用import导入
+script, 变量1, 变量2, 变量3 = argv : 该过程称为解包   script为脚本名
+    运行该脚本时需在python 之后键入运行的脚本名以及所需数目相应的变量名
+open() : 读取括号内的文件 返回文件对象，而不是文件内容 可以赋值给变量
+.read() : 读取open()命令所赋值的变量的内容
+    比如txt=open(文件名) print(txt.read())即打印文件的内容
+ctrl+c ：在powershell中即为中止该脚本
+.close() : 关闭文件，同保存
+.readline() :
+.truncate() : 清空文件
+.write() : 将括号内的内容写入文件
+.seek() : 括号内为数字 将读写位置(磁头)移动到相应字节 从那个位置开始读写
+from os.path import exists ：从 os.path 模块中使用exists函数，用于判断真假
+通过使用 ; 可以在同一行写多句命令
+len() : 字符串长度
+def : 创建函数  def 函数名(输入参数):     多参数以 , 隔开
+    冒号以下使用四个空格进行缩进的行均属于该函数，不能多也不能少
+引用函数输入的参数可以是数值 函数 变量
++= : a += b   即a = a + b
+return : 返回函数值 可赋值给变量
+python把函数或公式是由内向外打印
+int(input()) : 必须输入整数  float() 输入浮点数
+
+
+
+0 1 : 一个为一位
+8位为一字节 byte 8位01序列
+ASCII码 8位   用于编写英语及类似符
+Unicode : 通用编码 universal encoding  比ASCII庞大 32位
+压缩编码方式 : 针对常见字符使用8位，需要时再使用16 32位
+UTF-8 : Unicode Transformation Format 8 Bits 当前通用编码标准
+.encode() : 将字符串编写成字节序列
+.decode() : 将字节序列解码成字符串
+.strip() : 用于移除字符串头尾指定的字符（默认为空格）  移除空格中的内容
+.split(' ') : ''中的内容即分隔符   比如空格，意思是制定分隔符为空格
+.pop : 用于移除列表中的一个元素（默认最后一个元素），并且返回该元素的值
+    .pop(0) 为第一个元素 .pop(-1)为最后一个元素
+创建列表：hairs = ['brown', 'blond', 'red']    weight = [1, 2, 3]
+    必须要用[]括起，中间元素用 , 隔开 不能用空格代替
+for循环 : for numbe in weight:   number即C中的变量i 自己定义 in 表示在weight列表中
+    依次选取元素
+range(a,b) : 从第一个数到最后一个数，但不包含最后一个数  range(0, 4)就是0 1 2 3
+    这4个数，循环4次 含首不含尾的方式
+.append() : 在列表尾部追加元素
+访问列表：用基数：0 1 2 ...      序数：1 2 3...     python用基数 a[0] a[1]
+    序数等于有序，从1开始 基数等于随机选取 从0开始
+from sys import exit : exit() 中止程序 exit(0)表示程序正常退出 exit(1)表示发生错误
+.join() : 用于将序列中的元素以指定的字符连接生成一个新的字符串
+
+面向对象的术语：
+calss : 类，告诉python创建新类型的东西
+object : 对象，两个意思，即最基本的东西或者某样东西的实例
+instance : 实例，让python创建一个类时得到的东西
+self : 在类的函数中，self指代被访问的对象或者实例的一个变量
+inheritance : 继承，指一个类可以继承另一个类的特性
+composition : 组合，一个类可以将别的类作为它的部件构建起来
+attribute : 属性，类的一个属性，它来自组合，且通常是个变量
+is-a : 是什么，描述继承关系 ex : Salmon is-a Fish
+has-a : 有什么，描述一个东西由另外一些东西组成的，或某个东西有某个特征
