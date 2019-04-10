@@ -71,4 +71,30 @@ class CentralCorridor(Scene):
             return 'death'
 
         elif action == 'dodge!':
+            print(dedent("""
+                Like a world class boxer you dodge, weave, slip and
+                slide right as the Gothon's blaster crank a laser
+                past your head. In the middle of your artful dodge
+                your foot slips and you bang your head on your metal
+                wall and pass out.You wakeup shortly after only to
+                die as the Gothon stomps on your head and eats you.
+                """))
+            return 'death'
+        
+        elif action == "tell a joke":
+            print(dedent"""
+                Lucky for you they made you learn Gothon insults in
+                the academy. You tell the one Gothon joke you know:
+                Lbhe zbgure vf fb sng, jura fvgf nebhag gur ubhfr,
+                fur fvgf nebhag gur ubhfr. The Gothon stops, tries
+                not to laugh, then busts out laughing and can't move.
+                While he's laughing you run up and shoot him square in
+                the head putting him down,then jump throughthe
+                Weapon Armory door.
+                """))
+            return 'laser_weapon_armory'
+        
+        else:
+            print("DOES NOT COMPUTE!")
+            return 'central_corridor'
             
