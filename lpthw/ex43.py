@@ -1,5 +1,7 @@
 from sys import exit
 from random import randint
+# dedent函数为了让我们写房间描述时使用三引号字符串，他会把字符串开头空白去掉
+# 如果不用该函数，使用三个引号风格字符串会失败，因为他们会在屏幕上缩进
 from textwrap import dedent
 
 class Scene(object):
@@ -7,7 +9,8 @@ class Scene(object):
     def enter(self):
         print('This scene is not yet configured.')
         print('Subclass it and implement enter().')
-        exit(1)
+        # exit 推出整个程序，ecit(0)正常退出 exit(1)有错误退出
+        exit(0)
 
 class Engine(object):
 
@@ -19,6 +22,8 @@ class Engine(object):
         last_scene = self.scene_map.next_scene('finished')
 
         while current_scene != last_scene:
+            #结束时会报错。。还要分析
+            # AttributeError: 'NoneType' object has no attribute 'enter'
             next_scene_name = current_scene.enter()
             current_scene = self.scene_map.next_scene(next_scene_name)
 
@@ -26,7 +31,7 @@ class Engine(object):
         current_scene.enter()
 
 class Death(Scene):
-
+    # 随机五种嘲讽
     quips = [
         "You died. You kinda suck at this.",
         "Your mom would be proud...if she were smarter",
@@ -39,7 +44,7 @@ class Death(Scene):
         print(Death.quips[randint(0,len(self.quips)-1)])
 
 class CentralCorridor(Scene):
-
+# 根据不同返回字符串判定下一场景
     def enter(self):
         print(dedent("""
             The Gothons of Planet Percal #25 have invaded your ship and
@@ -69,7 +74,7 @@ class CentralCorridor(Scene):
                 dead. Then he eats you.
                 """))
             return 'death'
-
+# dodge 躲避
         elif action == 'dodge!':
             print(dedent("""
                 Like a world class boxer you dodge, weave, slip and
@@ -111,12 +116,12 @@ class LaserWeaponArmory(Scene):
             the lock closes forever and you can't get the bomb. The
             code is 3 digits.
             """))
-
+            # 这里与书上比少了f 即format 用了f会报错
         code = "{randint(1,9)}{randint(1,9)}{randint(1,9)}"
         guess = input("[keypad]> ")
         guesses = 0
-
-        while guess != code and guess < 10:
+        # 多了个int 因为输入是字符串 
+        while guess != code and int(guess) < 10:
             print("BZZZZEDDD!")
             guesses += 1
             guess = input("[keypad]> ")
